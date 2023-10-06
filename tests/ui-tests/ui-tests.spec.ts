@@ -2,8 +2,6 @@ import { test } from "../fixtures/fixtures";
 import labels from "./data/labels.json";
 
 test.describe("unauthenticated UI tests for movieDB", () => {
-    test.use({ storageState: { cookies: [], origins: [] } });
-
     test.beforeEach(async ({ homePage }) => {
         await homePage.gotoMainPage();
     });
@@ -25,6 +23,8 @@ test.describe("unauthenticated UI tests for movieDB", () => {
 });
 
 test.describe("authenticated UI tests for movieDB", () => {
+    test.use({ storageState: 'playwright/.auth/user.json' });
+
     test.beforeEach(async ({ homePage }) => {
         await homePage.gotoMainPage();
     });
