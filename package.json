@@ -14,10 +14,13 @@
   "author": "Bence Banyasz",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.35.1",
+    "@playwright/test": "^1.40.0",
     "aws-sdk": "^2.1458.0",
     "dotenv": "^16.3.1",
     "http-status-codes": "^2.2.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
   }
 }
