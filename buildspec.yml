@@ -4,21 +4,9 @@ phases:
     install:
         runtime-versions:
             nodejs: 18
-    pre_build:
-        commands:
-            - npm install
-            - npx playwright install --with-deps chromium
     build:
         commands:
             - echo Build started on `date`
             - echo Building and running tests
-            - npm run test
-    post_build:
-        commands:
-            - "[ ${CODEBUILD_BUILD_SUCCEEDING:-0} -eq 1 ] || exit 1"
-
-reports:
-    test-report:
-        files:
-            - "**/results.xml"
-        file-format: "JUNITXML"
+            - docker build -t playwright-docker .
+            - docker run -it --rm --ipc=host playwright-docker:latest npm run test
